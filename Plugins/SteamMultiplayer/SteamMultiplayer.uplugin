@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "SteamMultiplayer",
+	"Description": "Steam OnlineSubsystem Plugin",
+	"Category": "Other",
+	"CreatedBy": "Whatsit",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "SteamMultiplayer",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
