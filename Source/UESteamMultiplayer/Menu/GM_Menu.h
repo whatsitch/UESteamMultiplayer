@@ -16,4 +16,6 @@ class UESTEAMMULTIPLAYER_API AGM_Menu : public AGameModeBase
 	
 public:
 	AGM_Menu();
+	
+	virtual void PostLogin(APlayerController* NewPlayer) override;
 };

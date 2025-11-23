@@ -2,6 +2,8 @@
 
 
 #include "UI/Menu/Main/MainMenuWidget.h"
+
+#include "SteamMultiplayerSubsystem.h"
 #include "Components/Button.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Menu/PC_Menu.h"
@@ -39,11 +41,16 @@ void UMainMenuWidget::HandleMultiplayerClicked()
 {
 	UE_LOG(LogTemp, Log, TEXT("MainMenu: Multiplayer clicked"));
 	
-	if (APlayerController* PC = GetOwningPlayer())
+
+	if (UGameInstance* GI = GetGameInstance())
 	{
-		if (APC_Menu* MenuPC = Cast<APC_Menu>(PC))
+		if (USteamMultiplayerSubsystem* Subsystem = GI->GetSubsystem<USteamMultiplayerSubsystem>())
 		{
-			MenuPC->ShowMultiplayerMenu();
+			Subsystem->CreateSession(TEXT("MySteamLobby"), 4);
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("MainMenu: SteamMultiplayerSubsystem not found"));
 		}
 	}
 	

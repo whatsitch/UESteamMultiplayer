@@ -1,4 +1,6 @@
 #include "Menu/PC_Menu.h"
+
+#include "SteamMultiplayerSubsystem.h"
 #include "UI/Menu/Main/MainMenuWidget.h"
 #include "Blueprint/UserWidget.h"
 
@@ -14,6 +16,22 @@ void APC_Menu::BeginPlay()
 
 	bShowMouseCursor = true;
 
+
+	// Entscheide anhand der aktiven Session, welches Menü wir zeigen
+	if (UGameInstance* GI = GetGameInstance())
+	{
+		if (USteamMultiplayerSubsystem* Subsystem = GI->GetSubsystem<USteamMultiplayerSubsystem>())
+		{
+			if (Subsystem->HasActiveSession())
+			{
+				// Wir sind bereits in einer Lobby-Session → direkt Lobby anzeigen
+				ShowMultiplayerMenu();
+				return;
+			}
+		}
+	}
+
+	// Kein Multiplayer-Session aktiv → normales Hauptmenü
 	ShowMainMenu();
 }
 

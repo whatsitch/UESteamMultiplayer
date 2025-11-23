@@ -11,13 +11,12 @@ void USteamMultiplayerGameInstance::Init()
 
 	if (SteamSubsystem)
 	{
-		const bool bIsSteam = SteamSubsystem->IsUsingSteam();
-		UE_LOG(LogTemp, Log, TEXT("GameInstance: SteamMultiplayerSubsystem gefunden. IsUsingSteam = %s"),
-			   bIsSteam ? TEXT("true") : TEXT("false"));
+		SteamSubsystem->LobbyMapPath = TEXT("/Game/Maps/MainMenu");
+		SteamSubsystem->bTravelToLobbyOnCreate = true;
 	}
 	else
 	{
-		UE_LOG(LogTemp, Warning, TEXT("GameInstance: SteamMultiplayerSubsystem NICHT gefunden."));
+		UE_LOG(LogTemp, Warning, TEXT("GameInstance: SteamMultiplayerSubsystem not found"));
 	}
 }
 

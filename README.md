@@ -32,6 +32,8 @@ bAllowP2PPacketRelay=true
 [/Script/OnlineSubsystemSteam.SteamNetDriver]
 NetConnectionClassName="OnlineSubsystemSteam.SteamNetConnection"
 ````
+## MSVC Version
+- MSVC v143 - VS 2022 c++ x64/x86 build tools (v14.44-17.14)
 
 # TODO
 - SteamMultiplayer.Build.cs?
