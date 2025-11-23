@@ -21,7 +21,7 @@ public class UESteamMultiplayer : ModuleRules
 			"Slate"
 		});
 
-		PrivateDependencyModuleNames.AddRange(new string[] { });
+		PrivateDependencyModuleNames.AddRange(new string[] {"SteamMultiplayer"});
 
 		PublicIncludePaths.AddRange(new string[] {
 			"UESteamMultiplayer",

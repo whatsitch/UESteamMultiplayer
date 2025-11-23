@@ -25,7 +25,7 @@ public class SteamMultiplayer : ModuleRules
 		PublicDependencyModuleNames.AddRange(
 			new string[]
 			{
-				"Core",
+				"Core", "OnlineSubsystem",
 				// ... add other public dependencies that you statically link with here ...
 			}
 			);
@@ -37,7 +37,7 @@ public class SteamMultiplayer : ModuleRules
 				"CoreUObject",
 				"Engine",
 				"Slate",
-				"SlateCore",
+				"SlateCore", "OnlineSubsystemUtils",
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);
