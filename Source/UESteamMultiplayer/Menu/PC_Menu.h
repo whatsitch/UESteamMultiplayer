@@ -2,7 +2,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
-#include "UI/Main/MainMenuWidget.h"
+#include "UI/Menu/Main/MainMenuWidget.h"
+#include "UI/Menu/Multiplayer/MultiplayerMenuWidget.h"
 #include "PC_Menu.generated.h"
 
 
@@ -14,11 +15,22 @@ class UESTEAMMULTIPLAYER_API APC_Menu : public APlayerController
 public:
 	virtual void BeginPlay() override;
 
+	UFUNCTION(BlueprintCallable, Category="Menu")
+	void ShowMainMenu();
+
+	UFUNCTION(BlueprintCallable, Category="Menu")
+	void ShowMultiplayerMenu();
+
 protected:
 	UPROPERTY(EditDefaultsOnly, Category="UI")
 	TSubclassOf<UMainMenuWidget> MainMenuWidgetClass;
 
+	UPROPERTY(EditDefaultsOnly, Category="UI")
+	TSubclassOf<UMultiplayerMenuWidget> MultiplayerMenuWidgetClass;
+
 private:
 	UPROPERTY()
-	UMainMenuWidget* MainMenuWidget = nullptr;
+	UUserWidget* CurrentMenuWidget = nullptr;
+
+	void ShowMenuWidget(TSubclassOf<UUserWidget> WidgetClass);
 };

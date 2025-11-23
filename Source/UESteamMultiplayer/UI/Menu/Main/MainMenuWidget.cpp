@@ -1,9 +1,10 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "UI/Main/MainMenuWidget.h"
+#include "UI/Menu/Main/MainMenuWidget.h"
 #include "Components/Button.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "Menu/PC_Menu.h"
 
 void UMainMenuWidget::NativeConstruct()
 {
@@ -36,8 +37,16 @@ void UMainMenuWidget::HandleSingleplayerClicked()
 
 void UMainMenuWidget::HandleMultiplayerClicked()
 {
-	UE_LOG(LogTemp, Log, TEXT("MainMenu: Multiplayer geklickt (TODO: Multiplayer-Menü öffnen)."));
-	// Hier später: UESM_GameInstance → Multiplayer-Menü öffnen
+	UE_LOG(LogTemp, Log, TEXT("MainMenu: Multiplayer clicked"));
+	
+	if (APlayerController* PC = GetOwningPlayer())
+	{
+		if (APC_Menu* MenuPC = Cast<APC_Menu>(PC))
+		{
+			MenuPC->ShowMultiplayerMenu();
+		}
+	}
+	
 }
 
 void UMainMenuWidget::HandleQuitClicked()

@@ -48,3 +48,5 @@ NetConnectionClassName="OnlineSubsystemSteam.SteamNetConnection"
 ### Blueprint
 - Menu/BP_GM_Menu
 - Menu/BP_PC_Menu
+  - UI, select Main Menu Widget, Multiplayer Menu Widget
+- 
