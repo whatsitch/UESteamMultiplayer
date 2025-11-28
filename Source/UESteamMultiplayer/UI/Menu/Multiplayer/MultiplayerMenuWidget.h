@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "Components/Button.h"
+#include "Components/WidgetSwitcher.h"
 #include "Lobby/LobbyGameState.h"
 #include "UI/Menu/Lobby/LobbyPlayerEntryWidget.h"
 #include "MultiplayerMenuWidget.generated.h"
@@ -20,6 +21,9 @@ class UESTEAMMULTIPLAYER_API UMultiplayerMenuWidget : public UUserWidget
 protected:
 	virtual void NativeConstruct() override;
 	virtual void NativeDestruct() override;
+
+	UPROPERTY(meta=(BindWidget))
+	UWidgetSwitcher* LeftViewSwitcher;
 
 
 	/*----- Buttons -----*/
@@ -55,6 +59,16 @@ protected:
 	void HandleInviteFriendClicked();
 
 private:
+	
+	enum class EMultiplayerMenuView : uint8
+	{
+		Root = 0,
+		CreateLobby = 1,
+		ServerBrowser = 2
+	};
+
+	void SwitchToView(EMultiplayerMenuView NewView);
+	
 	/** -----Current LobbyGameState reference (World dependent)----- */
 	TWeakObjectPtr<ALobbyGameState> CachedLobbyGameState;
 
