@@ -24,16 +24,21 @@ protected:
 
 	UPROPERTY(meta=(BindWidget))
 	UWidgetSwitcher* LeftViewSwitcher;
-
-
-	/*----- Buttons -----*/
+	
+	/*----- Default View (0) -----*/
 
 	UPROPERTY(meta=(BindWidget))
 	UButton* CreateGameButton;
 
 	UPROPERTY(meta=(BindWidget))
 	UButton* JoinGameButton;
+	
+	/*----- View Create Game (1) -----*/
+	UPROPERTY(meta=(BindWidget))
+	UButton* StartGameButton;
+	
 
+	/*----- global elements -----*/
 	UPROPERTY(meta=(BindWidget))
 	UButton* BackButton;
 
@@ -57,6 +62,9 @@ protected:
 
 	UFUNCTION()
 	void HandleInviteFriendClicked();
+	
+	UFUNCTION()
+	void HandleStartGameClicked();
 
 private:
 	

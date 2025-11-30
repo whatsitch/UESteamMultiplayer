@@ -11,8 +11,8 @@ void USteamMultiplayerGameInstance::Init()
 
 	if (SteamSubsystem)
 	{
-		SteamSubsystem->LobbyMapPath = TEXT("/Game/Maps/MainMenu");
-		SteamSubsystem->bTravelToLobbyOnCreate = true;
+		SteamSubsystem->LobbyMapPath = TEXT("/Game/Maps/Lobby");
+		SteamSubsystem->bTravelToLobbyOnCreate = false;
 	}
 	else
 	{

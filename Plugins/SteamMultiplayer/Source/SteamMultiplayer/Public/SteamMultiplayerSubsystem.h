@@ -129,6 +129,10 @@ public:
 	UFUNCTION(BlueprintPure, Category="Steam|Sessions")
 	const TArray<FSteamSessionInfo>& GetLastSessionInfos() const { return LastSessionInfos; }
 
+	/* */
+	UFUNCTION(BlueprintCallable, Category="Steam|Sessions")
+	void TravelToLobby();
+
 	/** Map, zu der der Host nach erfolgreichem Create traveln soll (z.B. "/Game/Maps/Lobby") */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Steam|Sessions")
 	FString LobbyMapPath;

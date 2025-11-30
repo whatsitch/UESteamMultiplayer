@@ -29,6 +29,10 @@ void UMultiplayerMenuWidget::NativeConstruct()
 	{
 		InviteFriendButton->OnClicked.AddDynamic(this, &UMultiplayerMenuWidget::HandleInviteFriendClicked);
 	}
+	if (StartGameButton)
+	{
+		StartGameButton->OnClicked.AddDynamic(this, &UMultiplayerMenuWidget::HandleStartGameClicked);
+	}
 
 	// Set default view to the root Create/Join view
 	if (LeftViewSwitcher)
@@ -151,6 +155,33 @@ void UMultiplayerMenuWidget::HandleInviteFriendClicked()
 		else
 		{
 			UE_LOG(LogTemp, Warning, TEXT("MultiplayerMenu: SteamMultiplayerSubsystem not found"));
+		}
+	}
+}
+
+void UMultiplayerMenuWidget::HandleStartGameClicked()
+{
+	UE_LOG(LogTemp, Log, TEXT("MultiplayerMenu: Start Game clicked -> TravelToLobbyNow"));
+
+	// Nur Host/Server soll das machen
+	if (APlayerController* PC = GetOwningPlayer())
+	{
+		if (!PC->HasAuthority())
+		{
+			UE_LOG(LogTemp, Warning, TEXT("StartGame clicked on client - only host may start the game."));
+			return;
+		}
+	}
+
+	if (UGameInstance* GI = GetGameInstance())
+	{
+		if (USteamMultiplayerSubsystem* Subsystem = GI->GetSubsystem<USteamMultiplayerSubsystem>())
+		{
+			Subsystem->TravelToLobby();
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("MultiplayerMenu: SteamMultiplayerSubsystem not found in StartGame."));
 		}
 	}
 }

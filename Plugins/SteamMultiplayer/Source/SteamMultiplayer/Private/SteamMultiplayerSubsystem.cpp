@@ -639,3 +639,8 @@ void USteamMultiplayerSubsystem::TravelToLobbyIfConfigured()
 	UE_LOG(LogSteamMultiplayer, Log, TEXT("TravelToLobbyIfConfigured: ServerTravel to '%s'"), *TravelURL);
 	World->ServerTravel(TravelURL);
 }
+
+void USteamMultiplayerSubsystem::TravelToLobby()
+{
+	TravelToLobbyIfConfigured();
+}
